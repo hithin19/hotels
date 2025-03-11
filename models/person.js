@@ -8,6 +8,8 @@ const personSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   address: { type: String },
   salary: { type: Number, required: true },
+  username:{required:true,type:String},
+  password:{required:true,type:String}
 });
 
 export const Person = mongoose.model("Person", personSchema);

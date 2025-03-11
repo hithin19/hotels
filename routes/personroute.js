@@ -3,10 +3,7 @@ import { Person } from "../models/person.js";
 
 const router = express.Router();
 
-// Home route
-router.get("/", (req, res) => {
-  res.send("Hi, this is the home page");
-});
+
 
 // POST route to create a new person
 router.post("/person", async (req, res) => {
