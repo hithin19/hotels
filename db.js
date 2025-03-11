@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
-const mongoURL = "mongodb://localhost:27017/hotel";
+import dotenv from "dotenv"
+
+dotenv.config()
+
+
+const mongoURL = process.env.DB_URL
 
 async function connectDB() {
   try {
