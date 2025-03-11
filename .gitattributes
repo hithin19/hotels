@@ -1,0 +1,8 @@
+# Set default behavior to automatically normalize line endings.
+* text=auto
+
+# Force CRLF line endings for common text files.
+*.js    text eol=crlf
+*.json  text eol=crlf
+*.html  text eol=crlf
+*.css   text eol=crlf
