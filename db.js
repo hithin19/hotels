@@ -5,7 +5,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 
-const mongoURL = process.env.DB_URL_LOCAL;
+const mongoURL = process.env.DB_URL;
 
 async function connectDB() {
   try {
