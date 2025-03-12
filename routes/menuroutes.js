@@ -4,7 +4,7 @@ const router =express.Router();
 
 
 // POST route to create a new menu item
-router.post("/menu", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const data = req.body;
     const newMenuItem = new Menu(data);
@@ -18,7 +18,7 @@ router.post("/menu", async (req, res) => {
 });
 
 // GET route to fetch all menu items
-router.get("/menu", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const data = await Menu.find();
     console.log("Menu data fetched");
@@ -30,7 +30,7 @@ router.get("/menu", async (req, res) => {
 });
 
 //filter menu items based on taste
-router.get("/menu/:tastetype", async (req, res) => {
+router.get("/:tastetype", async (req, res) => {
     try {
       const tastetype = req.params.tastetype;
       const validTypes = ["spicy", "sweet", "sour"];

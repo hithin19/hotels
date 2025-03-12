@@ -3,10 +3,8 @@ import { Person } from "../models/person.js";
 
 const router = express.Router();
 
-
-
 // POST route to create a new person
-router.post("/person", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const data = req.body;
     const newPerson = new Person(data);
@@ -20,7 +18,7 @@ router.post("/person", async (req, res) => {
 });
 
 // GET route to fetch all persons
-router.get("/person", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const data = await Person.find();
     console.log("Person data fetched");
@@ -32,7 +30,7 @@ router.get("/person", async (req, res) => {
 });
 
 // GET route to fetch persons by work type
-router.get("/person/:worktypes", async (req, res) => {
+router.get("/:worktypes", async (req, res) => {
   try {
     const worktype = req.params.worktypes;
     const validWorkTypes = ["chef", "manager", "waiter"];
@@ -51,9 +49,10 @@ router.get("/person/:worktypes", async (req, res) => {
   }
 });
 
-router.put("/person/:id", async (req, res) => {
+// PUT route to update a person by id
+router.put("/:id", async (req, res) => {
   try {
-    const pid = req.params.id; //extract id from url parameter
+    const pid = req.params.id; // extract id from url parameter
     const updperson = req.body;
     const response = await Person.findByIdAndUpdate(pid, updperson, {
       new: true,
@@ -66,12 +65,13 @@ router.put("/person/:id", async (req, res) => {
     console.log("data updated");
     res.status(200).json(response);
   } catch (error) {
-    console.error("Error fetching person data:", error);
+    console.error("Error updating person data:", error);
     return res.status(500).send("Internal server error");
   }
 });
 
-router.delete("/person/:id", async (req, res) => {
+// DELETE route to delete a person by id
+router.delete("/:id", async (req, res) => {
   try {
     const pid = req.params.id;
     const response = await Person.findByIdAndDelete(pid);
@@ -81,7 +81,7 @@ router.delete("/person/:id", async (req, res) => {
     console.log("data deleted");
     res.status(200).json(response);
   } catch (error) {
-    console.error("Error fetching person data:", error);
+    console.error("Error deleting person data:", error);
     return res.status(500).send("Internal server error");
   }
 });
